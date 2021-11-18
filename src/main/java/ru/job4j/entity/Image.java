@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Override
     public boolean equals(Object o) {

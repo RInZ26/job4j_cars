@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     @Enumerated(value = EnumType.STRING)
     private CarCarcaseType carcaseType;
