@@ -60,12 +60,14 @@ public class AdRepository implements Store {
 
     @Override
     public Collection<Advert> findAdvertsWithImage() {
-        return performTx(s -> s.createQuery("select distinct a from Advert a join fetch a.images").list());
+        return performTx(s -> s.createQuery("select distinct a from Advert a "
+                + "join fetch a.images").list());
     }
 
     @Override
     public Collection<Advert> findAdvertsWithModel(CarModel model) {
-        return performTx(s -> s.createQuery("select distinct a from Advert a join fetch a.cars c where c.carModel = :model")
+        return performTx(s -> s.createQuery("select distinct a from Advert a "
+                        + "join fetch a.cars c where c.carModel = :model")
                 .setParameter("model", model).list());
     }
 
@@ -90,8 +92,9 @@ public class AdRepository implements Store {
 
     @Override
     public Advert findAdvertById(int id) {
-        return (Advert) performTx(s -> s.createQuery("from Advert a join fetch a.cars c join fetch a.images i " +
-                        "where  a.id = :id")
+        return (Advert) performTx(s -> s.createQuery("from Advert a "
+                        + "join fetch a.cars c join fetch a.images i "
+                        + "where  a.id = :id")
                 .setParameter("id", id)
                 .uniqueResult());
 

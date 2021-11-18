@@ -44,8 +44,10 @@ public class Main {
         store.findAdvertsByYesterDay().forEach(a -> System.out.println(a.getDescription()));
 
         System.out.println("findAdvertsWithModel LADA");
-        store.findAdvertsWithModel(CarModel.LADA).forEach(a -> System.out.println(a.getDescription()));
+        store.findAdvertsWithModel(CarModel.LADA)
+                .forEach(a -> System.out.println(a.getDescription()));
         System.out.println("findAdvertsWithModel MERCEDES");
-        store.findAdvertsWithModel(CarModel.MERCEDES).forEach(a -> System.out.println(a.getDescription()));
+        store.findAdvertsWithModel(CarModel.MERCEDES)
+                .forEach(a -> System.out.println(a.getDescription()));
     }
 }
