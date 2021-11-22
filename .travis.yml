@@ -1,0 +1,8 @@
+language: java
+# после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
+# Здесь используется сторонни сервис https://codecov.io/
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+env:
+  global:
+    - CODECOV_TOKEN="6fe6fb90-e9b7-4cef-8bd4-f4674e283d58"
