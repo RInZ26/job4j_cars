@@ -1,8 +1,11 @@
 package ru.job4j.entity;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
+import ru.job4j.entity.embeddable.Image;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,43 +15,54 @@ import java.util.Set;
 
 @Entity
 @Table(name = "adverts")
-@NoArgsConstructor
-@Getter
-@Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Advert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private int id;
 
+    @Getter
+    @Setter
     private String description;
 
-    private Boolean sold;
+    @Getter
+    @Setter
+    @Type(type = "yes_no")
+    private boolean sold;
 
+    @Getter
+    @Setter
     @Temporal(TemporalType.DATE)
     private Date publishDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
+    @Getter
     private User author;
 
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    private Set<Car> cars = new HashSet<>();
+    @OneToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY)
+    @Getter
+    private Car car;
 
-    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ElementCollection
     @JoinColumn(name = "advertId")
+    @Getter
+    @Setter
     private Set<Image> images = new HashSet<>();
 
-    public static Advert of(String description) {
+    public static Advert of(String description, Car car, User user) {
+        if (car == null || user == null) {
+            throw new NullPointerException();
+        }
+
         Advert advert = new Advert();
         advert.setDescription(description);
         advert.publishDate = new Date(System.currentTimeMillis());
-        return advert;
-    }
+        advert.car = car;
+        advert.author = user;
 
-    public void addCar(Car car) {
-        if (car == null) {
-            throw new NullPointerException();
-        }
-        cars.add(car);
+        return advert;
     }
 
     public void addImage(Image image) {

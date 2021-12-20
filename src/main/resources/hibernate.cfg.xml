@@ -19,7 +19,7 @@
         <property name="hibernate.jdbc.time_zone">Asia/Yekaterinburg</property>
 
         <mapping class="ru.job4j.entity.Advert"/>
-        <mapping class="ru.job4j.entity.Image"/>
+        <mapping class="ru.job4j.entity.embeddable.Image"/>
         <mapping class="ru.job4j.entity.User"/>
         <mapping class="ru.job4j.entity.Car"/>
     </session-factory>

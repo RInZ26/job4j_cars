@@ -34,8 +34,8 @@
                     <div class="row g-0">
                         <div class="col-md-6 col-lg-5 d-none d-md-block">
                             <img
-                                    src="images/ag.jpg"
-                                    alt="login form"
+                                    src="images/elya.jpg"
+                                    alt="reg form"
                                     class="img-fluid" style="border-radius: 1rem 0 0 1rem;"
                             />
                         </div>
@@ -45,11 +45,8 @@
                                 <form>
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <i class="fa fa-cubes" aria-hidden="true"></i>
-                                        <span class="h1 fw-bold mb-0">JOB4J_CARS</span>
+                                        <span class="h1 fw-bold mb-0">JOIN TO JOB4J CARS</span>
                                     </div>
-
-                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your
-                                        account</h5>
 
                                     <div class="form-outline mb-4">
                                         <input type="email" id="email" required class="form-control form-control-lg"/>
@@ -57,23 +54,51 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="password" id="password" required
+                                        <input id="login" required class="form-control form-control-lg"/>
+                                        <label class="form-label" for="login">Login</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input id="name" required class="form-control form-control-lg"/>
+                                        <label class="form-label" for="name">Name</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input id="patronymic" required class="form-control form-control-lg"/>
+                                        <label class="form-label" for="patronymic">Patronymic</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input id="surname" required class="form-control form-control-lg"/>
+                                        <label class="form-label" for="surname">Surname</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="passwordFirst" required
                                                class="form-control form-control-lg"/>
-                                        <label class="form-label" for="password">Password</label>
+                                        <label class="form-label" for="passwordFirst">Password</label>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="passwordSecond" required
+                                               class="form-control form-control-lg"/>
+                                        <label class="form-label" for="passwordSecond">Password</label>
                                     </div>
 
                                     <div class="pt-1 mb-4">
                                         <button class="btn btn-dark btn-lg btn-block"
-                                                onclick="return performLogin($('#email').val(), $('#password').val())"
-                                                type="button">Login
+                                                onclick="return performRegistration($('#email').val(), $('#login').val(),
+                                                  $('#name').val(), $('#patronymic').val(),  $('#surname').val(), $('#passwordFirst').val(),  $('#passwordSecond').val(),)"
+                                                type="button">Registr me now!!!
                                         </button>
                                     </div>
 
                                     <a class="small text-muted" href="#!">Forgot password?</a>
-                                    <p class="mb-5 pb-lg-2" onclick='return changeLocation("<%=request.getContextPath()%>/reg.do")' style="color: #393f81;">Don't have
-                                        an account? <a href="#!"
-                                                       style="color: #393f81;">Register
-                                            here</a></p>
+                                    <p class="mb-5 pb-lg-2"
+                                       onclick='return changeLocation("<%=request.getContextPath()%>/auth.do")'
+                                       style="color: #393f81;">Already in team? <a href="#!"
+                                                                                   style="color: #393f81;">Back to
+                                        login</a></p>
                                 </form>
                             </div>
                         </div>

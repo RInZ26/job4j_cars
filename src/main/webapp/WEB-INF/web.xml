@@ -1,7 +1,53 @@
 <!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
+    <!--  secutity-->
+    <servlet>
+        <servlet-name>AuthServlet</servlet-name>
+        <servlet-class>ru.job4j.servlet.security.AuthServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AuthServlet</servlet-name>
+        <url-pattern>/auth.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>ru.job4j.servlet.security.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegServlet</servlet-name>
+        <servlet-class>ru.job4j.servlet.security.RegServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegServlet</servlet-name>
+        <url-pattern>/reg.do</url-pattern>
+    </servlet-mapping>
+    <!--  ******-->
+
+    <servlet>
+        <servlet-name>AdvertServlet</servlet-name>
+        <servlet-class>ru.job4j.servlet.AdvertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdvertServlet</servlet-name>
+        <url-pattern>/advert.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainMenu</servlet-name>
+        <servlet-class>ru.job4j.servlet.MainMenuServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainMenu</servlet-name>
+        <url-pattern>/main.do</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -10,17 +10,20 @@ import java.util.Objects;
 @Entity
 @Table(name = "cars")
 @NoArgsConstructor
-@Getter
-@Setter
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
     private int id;
 
     @Enumerated(value = EnumType.STRING)
+    @Getter
+    @Setter
     private CarCarcaseType carcaseType;
 
     @Enumerated(value = EnumType.STRING)
+    @Getter
+    @Setter
     private CarModel carModel;
 
     public static Car of(CarCarcaseType carcaseType, CarModel carModel) {
